@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} Your Website Title {% endblock %}
+
+
+
+{% block content %}
+      
+
+
+
+<div class="container">
+        <div class="row">
+            <!-- Hotel Container -->
+            {% for hotel in hotel_list %}
+            <div class="col-md-6">
+                <div class="card hotel-card">
+                    <img src="{{ hotel.hotel_img1.url }}" class="card-img-top hotel-image" alt="Hotel Image">
+                    <div class="card-body hotel-details">
+                        <a class="nav-link" href="{% url 'hotel_details' hotel.id %}" style="font-size: 18px;">
+                        <h5 class="card-title">Hotel Name: {{ hotel.hotel_name }}</h5>
+                        </a>
+                        <p class="card-text">Price: ${{ hotel.price_per_night }}</p>
+                        <p class="card-text">City: {{ hotel.city_name }}</p>
+                        <p class="card-text">Country: {{ hotel.country_name }}</p>
+                        {% if request.user  in hotel.customers.all %}
+
+
+                   <a class="nav-link" href="{% url 'give_review' hotel.id %}" style="font-size: 18px;"> give a reviwe </a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- End Hotel Container -->
+        </div>
+    </div>
+
+
+        {% endblock %}

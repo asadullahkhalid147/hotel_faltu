@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} profile {% endblock %}
+
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+      
+<form method="post">
+    {% csrf_token %}
+
+   {{form|crispy}}
+
+    <input   class="btn btn-primary" type="submit" value="submit">
+  </form>
+
+
+</br>
+
+  <p><a href="{% url 'change_password' %}"  >    to change your change password click here </a></p>
+
+</br>
+
+        {% endblock %}

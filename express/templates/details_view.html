@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Details</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hotel-details-container {
+      margin-top: 50px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .field-container {
+      margin-bottom: 20px;
+    }
+    .hotel-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .btn-book {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hotel-details-container">
+      <div class="field-container">
+        <img src="{{ required_hotel.hotel_img1.url }}" class="hotel-image">
+        <h5>Hotel Name:</h5>
+        <p id="hotelName">{{ required_hotel.hotel_name }}</p>
+      </div>
+      <div class="field-container">
+        <h5>Price:</h5>
+        <p id="price">${{ required_hotel.price_per_night }}</p>
+      </div>
+      <div class="field-container">
+        <h5>City:</h5>
+        <p id="city">{{ required_hotel.city_name }}</p>
+      </div>
+      <div class="field-container">
+        <h5>Country:</h5>
+        <p id="country">{{ required_hotel.country_name }}</p>
+      </div>
+      <div class="field-container">
+        <h5>Description:</h5>
+        <p id="description">{{ required_hotel.descriptions }}</p>
+      </div>
+
+      <a class="nav-link" href="{% url 'booking' required_hotel.id %}" style="font-size: 18px;">
+      <button class="btn btn-primary btn-book">Book Hotel</button>
+      </a>
+      
+    </div>
+  </div>
+</body>
+</html>
